@@ -1,11 +1,11 @@
-import Main from './Main';
+import Cities from './Cities';
 // import FetchingData from './FetchingData';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Main />
+      <Cities />
     </div>
   );
 }

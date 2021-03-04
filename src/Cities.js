@@ -29,7 +29,7 @@ function Cities() {
         console.log(cities);
     }); */
     
-    const openWeatherMapURL = `http://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=${appID}`;
+    const openWeatherMapURL = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${appID}`;
     // const openWeatherMapFlag = `http://openweathermap.org/images/flags/${country_Name.toLowerCase()}.png`;
     // console.log(openWeatherMapURL);
 
