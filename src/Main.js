@@ -29,9 +29,9 @@ function Main() {
 
     return (
       <Router>
-        <div className="app">
-          <div className="app__bar">
-            <div className="app__title">
+        <div className="main">
+          <div className="main__bar">
+            <div className="main__title">
               <span><strong>Home</strong></span>
               <span><strong>Visited Cities</strong></span>
             </div>
@@ -56,7 +56,7 @@ function Main() {
               </form>
             </div>
           </div>
-          <div className="app__body">
+          <div className="main__body">
             <div className="city__forecast">
                 <Switch>
                   <Route path="/" exact component={ CurrentLocation } />
