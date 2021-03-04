@@ -27,18 +27,16 @@ function Main() {
   const openWeatherMapURL = `http://api.openweathermap.org/data/2.5/weather?q=${city_Name}&units=metric&appid=${appID}`;
   // const openWeatherMapFlag = `http://openweathermap.org/images/flags/${country_Name.toLowerCase()}.png`;
   // console.log(openWeatherMapURL);
-
-  if (currentWindowLocation === windowLocation) {
-    $(function() {
-      $(currentCityWeatherInfo).css('display', 'none');
-      $(searchedWeatherInfo).css('display', 'flex');
-    });
-  } else {
-    $(function() {
-      $(currentCityWeatherInfo).css('display', 'flex');
-      $(searchedWeatherInfo).css('display', 'none');
-    });
-  }
+  
+  $(function() {
+    if (currentWindowLocation === windowLocation) {
+        $(currentCityWeatherInfo).css('display', 'none');
+        $(searchedWeatherInfo).css('display', 'flex');
+    } else {
+        $(currentCityWeatherInfo).css('display', 'flex');
+        $(searchedWeatherInfo).css('display', 'none');
+    }
+  });
 
   useEffect(() => {
       let isMounted = true;
