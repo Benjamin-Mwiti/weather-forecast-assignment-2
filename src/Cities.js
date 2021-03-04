@@ -21,6 +21,13 @@ function Cities() {
 
     const cityName = useContext(CityNameContext);
     const appID = "1cc7ad57a30f3ba7be0d6a9766a69562";
+    /* const cities = document.querySelector('.city__weatherInfo');
+    console.log(cities); */
+
+    /* $(function() {
+        const cities = $('.city__weatherInfo');
+        console.log(cities);
+    }); */
     
     const openWeatherMapURL = `http://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=${appID}`;
     // const openWeatherMapFlag = `http://openweathermap.org/images/flags/${country_Name.toLowerCase()}.png`;
