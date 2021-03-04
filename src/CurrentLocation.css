@@ -1,0 +1,48 @@
+.current__location {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 80px;
+    border: .8px solid #ccc;
+    border-radius: 10px;
+    box-shadow: none;
+
+    transition: box-shadow 150ms linear;
+  }
+
+  .current__location:hover {
+      box-shadow: 1px 1px 5px #c3c3c3;
+  }
+
+  .current__location > p {
+      position: relative;
+      display: flex;
+  }
+
+  .current__location > p:nth-child(1) {
+      font-size: 1.8rem;
+      font-family: Adobe Fangsong Std R;
+  }
+
+  .current__location > p:nth-child(2) {
+    font-size: 1.4rem;
+  }
+
+  .current__location > p:nth-child(3) {
+    margin: 20px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 3px 3px rgb(139, 139, 139);
+  }
+
+  .current__location > p:nth-child(4) {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .current__location > p:nth-child(5) {
+    font-size: 1.5rem;
+  }
+  

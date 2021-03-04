@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .app__bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 30vh;
+    margin-bottom: 4vh;
+  }
+  
+  .app__bar > .app__title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: .4;
+    width: 100vw;
+    background-color: #ffc90e;
+  }
+  
+  .app__title > span {
+    position: relative;
+    display: flex;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #000;
+  }
+  
+  .search__container {
+    position: relative;
+    display: flex;
+    flex: .6;
+    align-items: center;
+    width: 100vw;
+    background: linear-gradient(#e67850, #f37c46, #e67850);
+  }
+  
+  .search__container > form {
+    position: relative;
+    display: flex;
+    margin: auto;
+  }
+  
+  .search__container > form > input {
+    width: 40vw;
+    height: 8vh;
+    border-radius: 20vw 0 0 20vw;
+    border-color: transparent;
+    outline: none;
+    font-size: 1em;
+  }
+  
+  #button {
+    width: 16vw;
+    height: 8vh;
+    border-radius: 0 20vw 20vw 0;
+    border: 2px solid #db5828;
+    outline: none;
+    background-color: #e96e50;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .city__forecast {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+

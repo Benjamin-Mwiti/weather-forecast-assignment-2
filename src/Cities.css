@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+.city__weatherInfo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: none;
+
+    transition: box-shadow 150ms linear;
+}
+
+.city__weatherInfo:hover {
+    box-shadow: 1px 1px 5px #c3c3c3;
+}
+
+.city__weatherInfo > p* {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+
