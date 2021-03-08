@@ -6,8 +6,8 @@ function CurrentLocation() {
     
     const [latLon, setLatLon] = useState([]);
     
-    console.log(latLon[0]);
-    console.log(latLon);
+    // console.log("Current location latitude: " + latLon[0]);
+    // console.log("Current location latitude and longitude: " + latLon);
 
     useEffect(() => {
         let isMounted = true;
@@ -62,16 +62,18 @@ function CurrentLocation() {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-        $('p').eq(1).text(`${days[day]} ${date} ${months[month]} ${year}`);
+        $('.currentLocation_forecast > span').eq(1).text(`${days[day]} ${date} ${months[month]} ${year}`);
     });
 
     return (
-        <div className="current__location">
-            <p>Toronto, CA</p>
-            <p></p>
-            <p>-15<sup>o</sup>C</p>
-            <p>Cloudy</p>
-            <p>-13<sup>o</sup>C / -16<sup>o</sup>C</p>
+        <div className="currentLocation">
+            <div className="currentLocation_forecast">
+                <span>Toronto, CA</span>
+                <span></span>
+                <span>-15<span className="sup">0</span>C</span>
+                <span>Cloudy</span>
+                <span>-13<span className="sup">0</span>C / -16<span className="sup">0</span>C</span>
+            </div>
         </div>
     )
 }
