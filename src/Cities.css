@@ -9,37 +9,93 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    flex: 1;
     align-items: center;
     justify-content: center;
+    flex: 1;
+}
+
+.pagination {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.page-item {
+    position: relative;
+    display: flex;
+    text-decoration: none !important;
+}
+
+.page-link {
+    margin: .4em;
+}
+
+.city__stats__container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 60vw;
+    height: 60vh;
+    padding: 0 1em;
+    overflow-y: auto;
 }
 
 .city__weatherInfo {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 1em 0;
-    padding: 20px;
+    margin-bottom: 1.2em;
+    height: 8.2em;
+    padding: .8em;
+    width: 100%;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: none;
+    line-height: 1.5em;
+    cursor: pointer;
 
     transition: box-shadow 150ms linear;
+}
+
+.weather__details {
+    position: relative;
+    display: none;
+    flex-direction: column;
 }
 
 .city__weatherInfo:hover {
     box-shadow: 1px 1px 5px #c3c3c3;
 }
 
-.city__weatherInfo > p* {
+.city__weatherInfo > span* {
     position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: left;
 }
 
-.city__weatherInfo > p:last-child > strong {
+.city__weatherInfo > span:first-child > strong {
+    margin-left: .5em;
+}
+
+.city__weatherInfo > span:nth-child(3){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+    font-size: 1em;
+}
+
+.city__weatherInfo > span:nth-child(3) > strong {
+    font-size: 1.6em;
     color: red;
+}
+
+.city__weatherInfo > span > .plus__icon {
+    position: relative;
+    display: flex;
+    margin-left: 30vw;
+    font-size: 1.8em;
 }
 
 

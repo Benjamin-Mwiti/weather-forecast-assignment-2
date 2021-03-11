@@ -5,19 +5,15 @@ import CurrentLocation from './CurrentLocation';
 // import FetchingData from "./FetchingData";
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
 import $ from 'jquery';
-import { ArrowDropDownIcon } from '@material-ui/icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { CaretDownFill } from 'react-bootstrap-icons';
 
 export const WeatherStatsContext = React.createContext();
 
 function Main() {
 
   const [city_Weather_Stats, setCity_Weather_Stats] = useState();
-  const [city_Name, setCity_Name] = useState();
+  const [city_Name, setCity_Name] = useState("");
   const [city_ID, setCity_ID] = useState();
-  const [country_Name, setCountry_Name] = useState();
-  const [weather_Stats, setWeather_Stats] = useState([]);
   const visitedCitiesIDs = [];
   const [visitedCitiesCount, setvisitedCitiesCount] = useState(0);
   // console.log(city_Weather_Stats);
@@ -45,7 +41,7 @@ function Main() {
                 type: "GET",
                 dataType: "json",
                 success: function(data) {
-                    return data;
+                  return data;
                 },
                 error: (err) => {
                     console.log(err);
@@ -55,13 +51,13 @@ function Main() {
         }
         
         // If the input field is empty, the API is not called
-        if(city_Name !== undefined) {
+        if(city_Name !== "") {
           getOpenWeatherMapData()
               .then(fectchedData => {
                 setCity_Weather_Stats(fectchedData.list);
               })
               .catch((error) => {
-                  console.log(error.message)
+                  console.log(error)
               });
         }
     });
@@ -90,10 +86,8 @@ function Main() {
             <div className="title">
               <span>
                 <strong>Visited Cities</strong>
-                <span>
-                  <i className="bi bi-caret-down-fill"></i>
-                  {/* <ArrowDropDownIconFilled /> */}
-                  {/* <i className="fas fa-caret-down"></i> */}
+                <span className="caret__icon">
+                  <CaretDownFill />
                 </span>
               </span>
               <div className="cities__visited">
@@ -102,7 +96,7 @@ function Main() {
             </div>
           </div>
           <div className="search__container">
-            <form>
+            <form onSubmit={ e => e.preventDefault() }>
               <input type="search" name="city-name" 
                 value={ city_Name }
                 placeholder="Name of your city" 
@@ -112,11 +106,11 @@ function Main() {
                 <button id="button" type="submit" 
                 onClick={ () => {
                   for(let VCID = 0; VCID < visitedCitiesIDs.length; VCID++) {
-                    if (visitedCitiesIDs[VCID] !== weather_Stats.id) {
+                    /* if (visitedCitiesIDs[VCID] !== weather_Stats.id) {
                       visitedCitiesIDs.push(city_ID);
                       console.log("visitedCitiesIDs: " + visitedCitiesIDs);
-                      setvisitedCitiesCount(visitedCitiesCount + 1);
-                    }
+                    } */
+                    setvisitedCitiesCount(visitedCitiesCount + 1);
                   /* let visitedCityID = visitedCitiesIDs.map( e => ( e ));
                   let weatherStatsID = weather_Stats.map( e => ( e ));
                   if (visitedCityID !== weatherStatsID) {

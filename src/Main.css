@@ -19,7 +19,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    flex: .3;
+    flex: .25;
     width: 100%;
   }
   
@@ -38,7 +38,6 @@
     display: flex;
     font-size: 1.3em;
     font-weight: 500;
-    text-decoration: none;
     color: #000;
   }
 
@@ -46,10 +45,10 @@
     color: #000;
   }
 
-  .title > span > span {
-    position: relative;
-    padding: 5px;
-    /* background-color: #fff; */
+  .title .caret__icon {
+    padding: 1px;
+    background-color: #fff;
+    cursor: pointer;
   }
 
   .cities__visited {
@@ -62,7 +61,7 @@
     flex: .54;
     align-items: center;
     width: 100vw;
-    background: linear-gradient(#e67850, #f37c46, #e67850);
+    background: #e48450;
   }
   
   .search__container > form {
@@ -72,8 +71,8 @@
   }
   
   .search__container > form > input {
-    width: 40vw;
-    height: 8vh;
+    width: 30vw;
+    height: 7vh;
     border-radius: 20vw 0 0 20vw;
     border-color: transparent;
     outline: none;
@@ -81,8 +80,8 @@
   }
   
   #button {
-    width: 16vw;
-    height: 8vh;
+    width: 12vw;
+    height: 7vh;
     border-radius: 0 20vw 20vw 0;
     border: 2px solid #db5828;
     outline: none;
@@ -99,7 +98,7 @@
   .main__body {
     position: relative;
     display: flex;
-    flex: .7;
+    flex: .75;
     align-items: center;
     justify-content: center;
   }
