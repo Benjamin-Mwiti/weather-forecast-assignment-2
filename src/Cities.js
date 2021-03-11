@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './Cities.css';
-import { WeatherStatsContext } from './Main';
-// import Pagination from './Pagination';
+import Main, { WeatherStatsContext } from './Main';
+import { actionType } from './Reducer';
+import { useStateValue } from './StatsProvider';
 import $ from 'jquery';
 import { Plus } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 
-export const CityCountContext = React.createContext();
-export const IdenticalCitiesContext = React.createContext();
+export const CityID = React.createContext();
 
 function Cities() {
 
+    const [{}, dispatch] = useStateValue();
     const citiesWeatherStats = useContext(WeatherStatsContext);
     // const [recently_Viewed, setRecently_Viewed] = useState([]);
     const [current_Page, setCurrent_Page] = useState(1);
@@ -22,7 +23,6 @@ function Cities() {
     const page_Numbers = [];
     console.log(citiesWeatherStats);
     console.log(recently_Viewed);
-    console.log("Recently viewed city IDs: " + recently_Viewed);
 
     $(function() {
         citiesWeatherStats.length > 2
@@ -71,15 +71,10 @@ function Cities() {
     } */
     
     const getID = (stats) => {
-        console.log(stats);
-        recently_Viewed.map(view => (
-            stats.id !== view
-            ? recently_Viewed.push(stats.id)
-            : console.log(`Failed to get ${stats.name}, ${ stats.sys.country } ID`)
-        ))
+        recently_Viewed.push(stats.id)
         console.log(recently_Viewed);
+        console.log("Recently viewed city IDs: " + recently_Viewed);
     }
-    
 
     return (
         <div className="cities">
@@ -105,6 +100,10 @@ function Cities() {
             <div className="city__stats__container">
                 {
                     currentStats.map(  stats => {
+                        dispatch({
+                            type: actionType.set_Stats,
+                            stats: stats
+                        });
                         return (
                             <div className="city__weatherInfo" key={ stats.id } onClick={ () => getID(stats) }>
                                 <span>

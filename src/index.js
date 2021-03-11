@@ -14,10 +14,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Reducer, { initialState } from './Reducer';
+import { StatsProvider } from './StatsProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StatsProvider initialState={ initialState } Reducer={ Reducer }>
+      <App />
+    </StatsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import './Main.css';
 import Cities from './Cities';
 import CurrentLocation from './CurrentLocation';
+import { useStateValue } from './StatsProvider';
 // import FetchingData from "./FetchingData";
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import $ from 'jquery';
 import { CaretDownFill } from 'react-bootstrap-icons';
 
@@ -13,9 +14,10 @@ function Main() {
 
   const [city_Weather_Stats, setCity_Weather_Stats] = useState();
   const [city_Name, setCity_Name] = useState("");
-  const [city_ID, setCity_ID] = useState();
+  const [{ stats }, dispatch] = useStateValue();
   const visitedCitiesIDs = [];
   const [visitedCitiesCount, setvisitedCitiesCount] = useState(0);
+  console.log(stats);
   // console.log(city_Weather_Stats);
   // const [cityID] = useParams();
   // console.log("City name: " + city_Name);
