@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import './Cities.css';
-import Main, { WeatherStatsContext } from './Main';
+import { WeatherStatsContext } from './Main';
 import { actionType } from './Reducer';
 import { useStateValue } from './StatsProvider';
 import $ from 'jquery';
@@ -13,19 +13,16 @@ function Cities() {
 
     const [{}, dispatch] = useStateValue();
     const citiesWeatherStats = useContext(WeatherStatsContext);
-    // const [recently_Viewed, setRecently_Viewed] = useState([]);
+    const clickRef = useRef();
     const [current_Page, setCurrent_Page] = useState(1);
-    const recently_Viewed = [];
     const stats_Per_Page = 3;
     const lastCityIndex = current_Page * stats_Per_Page;
     const firstCityIndex = lastCityIndex - stats_Per_Page;
     const currentStats = citiesWeatherStats.slice(firstCityIndex, lastCityIndex);
     const page_Numbers = [];
-    console.log(citiesWeatherStats);
-    console.log(recently_Viewed);
 
     $(function() {
-        citiesWeatherStats.length > 2
+        currentStats.length > 2
         ? $('.city__stats__container').css('border-bottom', '.18em solid #9ec3e6')
         : $('.city__stats__container').css('border-bottom', 'none')
         $('.city__weatherInfo').click(function() {
@@ -40,41 +37,22 @@ function Cities() {
         });
     });
 
+    // Pagination
     for(let i = 1; i <= Math.ceil(citiesWeatherStats.length / stats_Per_Page); i++) {
         page_Numbers.push(i)
     }
-
+    // Pagination
     const paginate = pageNumber => setCurrent_Page(pageNumber);
-
-    // Use a function for pushing the IDs outside the return function and reference it passing the stats as its parameter
-    // let viewedID;
-    /* recently_Viewed.map(view => (
-        stats.id !== view
-        ? recently_Viewed.push(stats.id)
-        : console.log(`Failed to get ${stats.name}, ${ stats.sys.country } ID`)
-        // return viewedID = view;
-    )) */
-    /* for(let i = 0; i < recently_Viewed.length; i++) {
-        console.log(recently_Viewed[i]);
-        if(stats.id !== recently_Viewed[i]) {
-            recently_Viewed.push(stats.id);
-            console.log(recently_Viewed[i]);
-        } else {
-            console.log(`Failed to get ${stats.name}, ${ stats.sys.country } ID`);
-        }
-    } */
-    /* if(stats.id !== viewedID) {
-        recently_Viewed.push(stats.id);
-        console.log(viewedID);
-    } else {
-        console.log(`Failed to get ${stats.name}, ${ stats.sys.country } ID`);
-    } */
     
-    const getID = (stats) => {
-        recently_Viewed.push(stats.id)
-        console.log(recently_Viewed);
-        console.log("Recently viewed city IDs: " + recently_Viewed);
-    }
+    useEffect(() => {
+        const getID = stats => {
+            dispatch({
+                type: actionType.set_Stats,
+                stats: stats
+            });
+        }
+        clickRef.current = getID;
+    }, []);
 
     return (
         <div className="cities">
@@ -100,12 +78,8 @@ function Cities() {
             <div className="city__stats__container">
                 {
                     currentStats.map(  stats => {
-                        dispatch({
-                            type: actionType.set_Stats,
-                            stats: stats
-                        });
                         return (
-                            <div className="city__weatherInfo" key={ stats.id } onClick={ () => getID(stats) }>
+                            <div className="city__weatherInfo" key={ stats.id } onClick={ () => clickRef.current(stats) }>
                                 <span>
                                     <img src={`http://openweathermap.org/images/flags/${stats.sys.country.toLowerCase()}.png`} width="20" alt="country flag"/>
                                     <strong>
